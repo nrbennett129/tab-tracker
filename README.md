@@ -1,3 +1,2 @@
 # Tab Tracker Demo App
-This application is a Vue.js and Express.js application. It is the result of a guided tutorial from 
-Cody Seibert on freeCodeCamp.com
+This app is a lesson on Vue.js and Express.js. It is the result of a guided tutorial from Cody Seibert on freeCodeCamp.com and meant to be training through a full project.

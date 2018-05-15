@@ -2,9 +2,7 @@
   <div>
     <h1>Register</h1>
     <input type="email" name="email" placeholder="email" v-bind="email"/>
-    <br>
     <input type="password" name="password" placeholder="password" v-bind="password">
-    <br>
     <button @click="register">Register</button>
   </div>
 </template>

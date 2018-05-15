@@ -1,4 +1,4 @@
-const AuthenticationController = require('./controllers/AuthenticatonController')
+const AuthenticationController = require('./controllers/AuthenticationController')
 
 module.exports = (app) => {
   app.post('/register', AuthenticationController.register)

@@ -1,11 +1,23 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <input type="email" name="email" placeholder="email" v-model.lazy="email"/>
-    <input type="password" name="password" placeholder="password" v-model.lazy="password"/>
-    <button @click="register">Register</button>
-    <div class="error" v-html="error"></div>
-  </div>
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm8 md4>
+      <v-card class="white elevation-12">
+        <v-toolbar dark class="cyan">
+          <v-toolbar-title>Register</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text>
+          <v-form>
+            <v-text-field type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
+            <v-text-field type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn dark class="cyan" @click="register">Register</v-btn>
+        </v-card-actions>
+        <v-alert icon="warning" type="error" :value="error">{{error}}</v-alert>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -37,9 +49,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-  width: 340px;
-  margin: 0px auto;
-  color: red;
+.card__actions{
+  justify-content: center;
 }
 </style>

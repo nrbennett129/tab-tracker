@@ -1,6 +1,12 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div in="app">
+    <v-app>
+      <v-content>
+        <v-container fluid fill-height>
+          <router-view/>
+        </v-container>
+      </v-content>
+    </v-app>
   </div>
 </template>
 

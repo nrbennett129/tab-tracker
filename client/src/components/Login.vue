@@ -2,7 +2,7 @@
   <v-layout fill-height align-center justify-center>
     <v-flex xs12 sm8 md4>
       <v-card class="white elevation-12">
-        <v-toolbar dark class="cyan">
+        <v-toolbar dark dense class="cyan">
           <v-toolbar-title>Login</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
@@ -37,10 +37,13 @@ export default {
   methods: {
     async login () {
       try {
-        await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           email: this.email,
-          password: this.password
+          password: this.password,
+          error: null
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

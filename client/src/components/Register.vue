@@ -2,11 +2,11 @@
   <v-layout align-center justify-center>
     <v-flex xs12 sm8 md4>
       <v-card class="white elevation-12">
-        <v-toolbar dark class="cyan">
+        <v-toolbar dark dense class="cyan">
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
-          <v-form>
+          <v-form autocomplete="off">
             <v-text-field prepend-icon="mail" type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
             <v-text-field prepend-icon="lock" type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
           </v-form>
@@ -37,10 +37,12 @@ export default {
   methods: {
     async register () {
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

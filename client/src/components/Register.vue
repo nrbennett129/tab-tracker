@@ -1,29 +1,23 @@
 <template>
-  <v-layout align-center justify-center>
-    <v-flex xs12 sm8 md4>
-      <v-card class="white elevation-12">
-        <v-toolbar dark dense class="cyan">
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
-        <v-card-text>
-          <v-form autocomplete="off">
-            <v-text-field prepend-icon="mail" type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
-            <v-text-field prepend-icon="lock" type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
-          </v-form>
-        </v-card-text>
-        <v-layout justify-center>
-          <v-card-actions>
-            <v-btn dark class="cyan" @click="register">Register</v-btn>
-          </v-card-actions>
-        </v-layout>
-        <v-alert icon="warning" type="error" :value="error">{{error}}</v-alert>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <panel title="Sign Up">
+    <v-card-text>
+      <v-form autocomplete="off">
+        <v-text-field prepend-icon="mail" type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
+        <v-text-field prepend-icon="lock" type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
+      </v-form>
+    </v-card-text>
+    <v-layout justify-center>
+      <v-card-actions>
+        <v-btn dark class="cyan" @click="register">Register</v-btn>
+      </v-card-actions>
+    </v-layout>
+    <v-alert icon="warning" type="error" :value="error">{{error}}</v-alert>
+  </panel>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
 
 export default {
   name: 'Register',
@@ -47,6 +41,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>

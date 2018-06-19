@@ -1,13 +1,17 @@
 <template>
-  <panel title='Songs'>
-    <div
-      v-for="song in songs"
-      :key="song.id">
-      {{song.title}}
-      {{song.artist}}
-      {{song.album}}
-    </div>
-  </panel>
+  <v-layout align-center justify-center >
+    <v-flex sm8>
+      <panel title='Songs'>
+        <div
+          v-for="song in songs"
+          :key="song.id">
+          {{song.title}}
+          {{song.artist}}
+          {{song.album}}
+        </div>
+      </panel>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>

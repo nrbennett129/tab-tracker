@@ -1,18 +1,22 @@
 <template>
-  <panel title="Sign Up">
-    <v-card-text>
-      <v-form autocomplete="off">
-        <v-text-field prepend-icon="mail" type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
-        <v-text-field prepend-icon="lock" type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
-      </v-form>
-    </v-card-text>
-    <v-layout justify-center>
-      <v-card-actions>
-        <v-btn dark class="cyan" @click="register">Register</v-btn>
-      </v-card-actions>
-    </v-layout>
-    <v-alert icon="warning" type="error" :value="error">{{error}}</v-alert>
-  </panel>
+  <v-layout justify-center align-center>
+    <v-flex xs12 sm8 md4>
+      <panel title="Sign Up">
+        <v-card-text>
+          <v-form autocomplete="off">
+            <v-text-field prepend-icon="mail" type="email" name="email" label="Email" v-model.lazy="email"></v-text-field>
+            <v-text-field prepend-icon="lock" type="password" name="password" label="Password" v-model.lazy="password"></v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-layout justify-center>
+          <v-card-actions>
+            <v-btn dark class="cyan" @click="register">Register</v-btn>
+          </v-card-actions>
+        </v-layout>
+        <v-alert icon="warning" type="error" :value="error">{{error}}</v-alert>
+      </panel>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>

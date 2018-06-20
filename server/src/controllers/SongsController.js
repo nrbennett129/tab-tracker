@@ -16,7 +16,7 @@ module.exports = {
   async createSong (req, res) {
     try {
       const song = await Song.create(req.body)
-      const songJson = song.toJson()
+      const songJson = song.toJSON()
 
       res.send(songJson)
     } catch (error) {

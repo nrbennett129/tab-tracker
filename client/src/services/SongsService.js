@@ -5,6 +5,6 @@ export default {
     return api().get('songs')
   },
   createSong (song) {
-    return api().post('songs/create', song)
+    return api().post('songs', song)
   }
 }

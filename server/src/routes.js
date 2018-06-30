@@ -15,4 +15,7 @@ module.exports = (app) => {
 
   app.post('/songs',
     SongsController.createSong)
+
+  app.delete('/songs/:songId',
+    SongsController.deleteSong)
 }

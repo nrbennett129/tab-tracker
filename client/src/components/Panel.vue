@@ -2,6 +2,8 @@
   <v-card class="white elevation-12">
     <v-toolbar dark dense class="cyan">
       <v-toolbar-title>{{title}}</v-toolbar-title>
+      <slot name="toolbar">
+      </slot>
     </v-toolbar>
     <slot>
     </slot>

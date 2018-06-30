@@ -25,5 +25,20 @@ module.exports = {
         error: 'An error has occured trying to create a song.'
       })
     }
+  },
+  async deleteSong (req, res) {
+    try {
+      await Song.destroy({
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(`Removed song with ID of ${req.params.songId}`)
+    } catch (error) {
+      console.log(error)
+      res.status(500).send({
+        error: 'An error has occured trying to delete a song.'
+      })
+    }
   }
 }

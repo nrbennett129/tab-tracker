@@ -6,5 +6,8 @@ export default {
   },
   createSong (song) {
     return api().post('songs', song)
+  },
+  deleteSong (songId) {
+    return api().delete(`songs/${songId}`, {params: {id: songId}})
   }
 }

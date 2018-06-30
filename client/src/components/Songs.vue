@@ -52,7 +52,13 @@ export default {
       this.$router.push(route)
     },
     async deleteSong (songId) {
-      await SongsService.deleteSong(songId)
+      const res = (await SongsService.deleteSong(songId)).data
+      console.log(res)
+      if (res.removed > 0) {
+        this.songs = this.songs.filter((song) => {
+          return (song.id !== res.id)
+        })
+      }
     }
   }
 }

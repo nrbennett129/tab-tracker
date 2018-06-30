@@ -28,12 +28,17 @@ module.exports = {
   },
   async deleteSong (req, res) {
     try {
-      await Song.destroy({
+      const rowsRemoved = await Song.destroy({
         where: {
           id: req.params.songId
         }
       })
-      res.send(`Removed song with ID of ${req.params.songId}`)
+      const msg = rowsRemoved > 0 ? `Removed song with ID of ${req.params.songId}` : 'Song does not exist.'
+      res.status(200).send({
+        removed: rowsRemoved,
+        id: Number(req.params.songId),
+        message: msg
+      })
     } catch (error) {
       console.log(error)
       res.status(500).send({

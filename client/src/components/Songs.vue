@@ -7,7 +7,7 @@
         </v-btn>
         <v-list two-line avatar>
           <template v-for="(song,index) in songs">
-            <v-list-tile :key="song.id" @click="">
+            <v-list-tile :key="song.id" @click="navigateTo({name: 'view-song'})">
               <v-list-tile-avatar tile>
                 <img v-if="song.albumImageUrl" :src="song.albumImageUrl">
                 <v-icon v-else>music-note</v-icon>

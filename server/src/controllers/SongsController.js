@@ -13,6 +13,16 @@ module.exports = {
       })
     }
   },
+  async getSong (req, res) {
+    try {
+      const song = await Song.findById(req.params.songId)
+      res.send(song)
+    } catch (error) {
+      res.status(500).send({
+        error: 'An error has occured trying to retreive a song.'
+      })
+    }
+  },
   async createSong (req, res) {
     try {
       const song = await Song.create(req.body)

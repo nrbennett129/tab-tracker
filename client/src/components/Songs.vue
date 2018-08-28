@@ -7,7 +7,13 @@
         </v-btn>
         <v-list two-line avatar>
           <template v-for="(song,index) in songs">
-            <v-list-tile :key="song.id" @click="navigateTo({name: 'view-song'})">
+            <v-list-tile :key="song.id" @click="navigateTo(
+              {
+                name: 'view-song',
+                params: {
+                  songId: song.id
+                  }
+              })">
               <v-list-tile-avatar tile>
                 <img v-if="song.albumImageUrl" :src="song.albumImageUrl">
                 <v-icon v-else>music-note</v-icon>
@@ -19,7 +25,7 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-btn icon @click="deleteSong(song.id)">
-                  <v-icon color="grey">clear</v-icon>
+                  <v-icon color="grey">delete_outline</v-icon>
                 </v-btn>
               </v-list-tile-action>
             </v-list-tile>

@@ -7,6 +7,7 @@
             <v-text-field type="text" name="title" label="Title" v-model.lazy="song.title"></v-text-field>
             <v-text-field type="text" name="artist" label="Artist" v-model.lazy="song.artist"></v-text-field>
             <v-text-field type="text" name="genre" label="Genre" v-model.lazy="song.genre"></v-text-field>
+            <v-text-field type="text" name="album" label="Album" v-model.lazy="song.album"></v-text-field>
             <v-text-field type="text" name="albumImageUrl" label="Album Cover URL" v-model.lazy="song.albumImageUrl"></v-text-field>
             <v-text-field type="text" name="youtubeId" label="YouTube ID" v-model.lazy="song.youtubeId"></v-text-field>
           </v-form>

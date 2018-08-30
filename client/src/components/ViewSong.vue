@@ -1,7 +1,22 @@
 <template>
   <v-layout wrap justify-space-around>
-    <v-flex xs12 sm6>
-      <panel title="Song Metadata">
+    <v-flex xs12 sm12 md6>
+      <panel title="Info">
+        <v-card-title primary-title>
+          <div>
+            <h1>{{song.title}}</h1>
+            <h3>{{song.artist}}</h3>
+          </div>
+          <v-spacer></v-spacer>
+          <div>
+            <img :src="song.albumImageUrl" :alt="song.album + ' Album Art'"
+                  :title="song.album" height="200" width="200"/>
+          </div>
+        </v-card-title>
+      </panel>
+    </v-flex>
+    <v-flex xs12 sm12 md6>
+      <panel title="Video">
         <v-card-media>
           <iframe width="100%"
                   height="400px"
@@ -12,27 +27,21 @@
                   allowfullscreen>
           </iframe>
         </v-card-media>
-        <v-card-title primary-title>
-          <div>
-            <h1>{{song.title}}</h1>
-            <h3>{{song.artist}}</h3>
-          </div>
-          <v-spacer></v-spacer>
-          <div>
-            <img :src="song.albumImageUrl" height="150px" width="150px"/>
-          </div>
-        </v-card-title>
       </panel>
     </v-flex>
-    <v-flex xs12 sm6>
-    <panel title="Song Structure">
+    <v-flex xs12 sm12 md6>
+    <panel title="Tabs">
       <v-card-text>
         <textarea :value="song.tab"></textarea>
-        <textarea :value="song.lyrics"></textarea>
       </v-card-text>
     </panel>
     </v-flex>
-    <v-flex xs6>
+    <v-flex xs12 sm12 md6>
+      <panel title="Lyrics">
+        <v-card-text>
+          <textarea :value="song.lyrics"></textarea>
+        </v-card-text>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
@@ -68,5 +77,4 @@ export default {
     width: 100%;
     min-height: 37vh;
   }
-
 </style>

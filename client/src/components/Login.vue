@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center>
+  <v-layout justify-center align-center>
     <v-flex xs12 sm8 md4>
       <panel title="Login">
         <v-card-text>

@@ -2,17 +2,24 @@
   <v-layout wrap justify-space-around>
     <v-flex xs12 sm12 md6>
       <panel title="Info">
-        <v-card-title primary-title>
-          <div>
-            <h1>{{song.title}}</h1>
-            <h3>{{song.artist}}</h3>
-          </div>
-          <v-spacer></v-spacer>
-          <div>
+        <v-btn slot="toolbar" absolute fab color="pink" right @click="navigateTo({
+          name: 'edit-song',
+          params: {
+            songId: song.id
+          }
+        })">
+          <v-icon >edit</v-icon>
+        </v-btn>
+        <v-layout fill-height align-center justify-end>
+          <v-flex justify-center>
+                <h1>{{song.title}}</h1>
+                <h3>{{song.artist}}</h3>
+          </v-flex>
+          <v-flex>
             <img :src="song.albumImageUrl" :alt="song.album + ' Album Art'"
                   :title="song.album" height="200" width="200"/>
-          </div>
-        </v-card-title>
+          </v-flex>
+        </v-layout>
       </panel>
     </v-flex>
     <v-flex xs12 sm12 md6>
@@ -63,6 +70,11 @@ export default {
   },
   components: {
     Panel
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
   },
   async mounted () {
     const songId = this.$store.state.route.params.songId

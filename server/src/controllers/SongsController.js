@@ -55,5 +55,21 @@ module.exports = {
         error: 'An error has occured trying to delete a song.'
       })
     }
-  }
+  },
+  async updateSong (req, res) {
+    try {
+      const song = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+
+      res.send(req.body)
+    } catch (error) {
+      console.log(error)
+      res.status(500).send({
+        error: 'An error has occured trying to update a song.'
+      })
+    }
+  },
 }

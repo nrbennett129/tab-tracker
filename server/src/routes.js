@@ -21,4 +21,7 @@ module.exports = (app) => {
 
   app.delete('/songs/:songId',
     SongsController.deleteSong)
+
+  app.put('/songs/:songId',
+    SongsController.updateSong)
 }

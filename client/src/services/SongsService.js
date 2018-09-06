@@ -12,5 +12,8 @@ export default {
   },
   deleteSong (songId) {
     return api().delete(`songs/${songId}`)
+  },
+  updateSong (song) {
+    return api().put(`songs/${song.id}`, song)
   }
 }

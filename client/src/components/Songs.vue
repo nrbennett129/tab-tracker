@@ -2,9 +2,18 @@
   <v-layout align-center justify-center >
     <v-flex sm8>
       <panel title="Songs">
-        <v-btn slot="toolbar" absolute fab color="pink" right @click="navigateTo({name: 'create-song'})">
-          <v-icon >add</v-icon>
-        </v-btn>
+        <template slot="toolbar">
+          <v-spacer></v-spacer>
+            <v-text-field color="white"
+              width="100px"
+              hide-details
+              prepend-icon="search"
+              single-line class="mr-4"
+              v-model="search"></v-text-field>
+          <v-btn fab color="pink" right @click="navigateTo({name: 'create-song'})">
+            <v-icon >add</v-icon>
+          </v-btn>
+        </template>
         <v-list two-line avatar>
           <template v-for="(song,index) in songs">
             <v-list-tile :key="song.id" @click="navigateTo(
@@ -44,15 +53,14 @@ import Panel from '@/components/Panel'
 export default {
   data () {
     return {
+      search: '',
       songs: null
     }
   },
   components: {
     Panel
   },
-  async mounted () {
-    this.songs = (await SongsService.getAllSongs()).data
-  },
+
   methods: {
     navigateTo (route) {
       this.$router.push(route)
@@ -64,6 +72,26 @@ export default {
         this.songs = this.songs.filter((song) => {
           return (song.id !== res.id)
         })
+      }
+    }
+  },
+  watch: {
+    search (value) {
+      const route = {
+        name: 'songs'
+      }
+      if (value !== '') {
+        route.query = {
+          search: this.search
+        }
+      }
+      this.$router.push(route)
+    },
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.search = value
+        this.songs = (await SongsService.getAllSongs(value)).data
       }
     }
   }

@@ -13,11 +13,28 @@
         <v-layout fill-height align-center justify-end>
           <v-flex justify-center>
                 <h1>{{song.title}}</h1>
-                <h3>{{song.artist}}</h3>
+                <h3>
+                  <router-link :to="{
+                    name: 'songs',
+                    query: {
+                      search: song.artist
+                    }
+                  }">
+                    {{song.artist}}
+                  </router-link>
+                </h3>
+                <h4 class="genre">{{song.genre}}</h4>
           </v-flex>
           <v-flex>
-            <img :src="song.albumImageUrl" :alt="song.album + ' Album Art'"
-                  :title="song.album" height="200" width="200"/>
+            <router-link :to="{
+              name: 'songs',
+              query: {
+                search: song.album
+              }
+            }">
+              <img :src="song.albumImageUrl" :alt="song.album + ' Album Art'"
+              :title="song.album" height="200" width="200"/>
+            </router-link>
           </v-flex>
         </v-layout>
       </panel>
@@ -88,5 +105,12 @@ export default {
   textarea {
     width: 100%;
     min-height: 37vh;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .genre {
+    font-style: italic;
   }
 </style>

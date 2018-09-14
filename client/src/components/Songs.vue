@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 
@@ -76,7 +77,7 @@ export default {
     }
   },
   watch: {
-    search (value) {
+    search: _.debounce(function (value) {
       const route = {
         name: 'songs'
       }
@@ -86,7 +87,7 @@ export default {
         }
       }
       this.$router.push(route)
-    },
+    }, 700),
     '$route.query.search': {
       immediate: true,
       async handler (value) {

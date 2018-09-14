@@ -10,19 +10,13 @@
               prepend-icon="search"
               single-line class="mr-4"
               v-model="search"></v-text-field>
-          <v-btn fab color="pink" right @click="navigateTo({name: 'create-song'})">
+          <v-btn fab color="pink" right :to="{name: 'create-song'}">
             <v-icon >add</v-icon>
           </v-btn>
         </template>
         <v-list two-line avatar>
           <template v-for="(song,index) in songs">
-            <v-list-tile :key="song.id" @click="navigateTo(
-              {
-                name: 'view-song',
-                params: {
-                  songId: song.id
-                  }
-              })">
+            <v-list-tile :key="song.id" :to="{name: 'view-song', params: {songId: song.id}}">
               <v-list-tile-avatar tile>
                 <img v-if="song.albumImageUrl" :src="song.albumImageUrl">
                 <v-icon v-else>music-note</v-icon>
@@ -63,9 +57,6 @@ export default {
   },
 
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    },
     async deleteSong (songId) {
       const res = (await SongsService.deleteSong(songId)).data
       console.log(res)
@@ -100,11 +91,4 @@ export default {
 </script>
 
 <style scoped>
-  .tile-action {
-    visibility: hidden;
-  }
-  .list-tile:hover .tile-action {
-    visibility: visible;
-  }
-
 </style>

@@ -2,12 +2,12 @@
   <v-layout wrap justify-space-around>
     <v-flex xs12 sm12 md6>
       <panel title="Info">
-        <v-btn slot="toolbar" absolute fab color="pink" right @click="navigateTo({
+        <v-btn slot="toolbar" absolute fab color="pink" right :to="{
           name: 'edit-song',
           params: {
             songId: song.id
           }
-        })">
+        }">
           <v-icon >edit</v-icon>
         </v-btn>
         <v-layout fill-height align-center justify-end>

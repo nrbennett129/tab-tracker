@@ -11,7 +11,7 @@ function hashPassword (user, options) {
   return bcrypt
     .genSaltAsync(SALT_FACTOR)
     .then(salt => bcrypt.hashAsync(user.password, salt, null))
-    .then(hash => { user.setDataValue('password', hash) })
+    .then(hash => user.setDataValue('password', hash))
 }
 
 module.exports = (sequelize, DataTypes) => {
@@ -27,12 +27,14 @@ module.exports = (sequelize, DataTypes) => {
   {
     hooks: {
       beforeCreate: hashPassword,
-      beforeUpdate: hashPassword,
-      beforeSave: hashPassword
+      beforeUpdate: hashPassword
     }
   })
 
   User.prototype.comparePassword = function (password) {
+    console.log('inside compare password')
+    console.log(password)
+    console.log(this.password)
     return bcrypt.compareAsync(password, this.password)
   }
 
